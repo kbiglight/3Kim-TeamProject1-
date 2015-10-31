@@ -124,13 +124,16 @@
   <data name="화면" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\화면.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="월드맵" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\월드맵.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="화면2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\화면2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="게임화면" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\게임화면.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="월드맵" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\월드맵.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="커서2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\커서2.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

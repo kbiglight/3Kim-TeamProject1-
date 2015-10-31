@@ -60,7 +60,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="unit.cs" />
+    <Compile Include="unit.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,6 +75,8 @@
     <None Include="Resources\화면2.bmp" />
     <None Include="Resources\게임화면.bmp" />
     <None Include="Resources\월드맵.bmp" />
+    <Content Include="Resources\커서.bmp" />
+    <None Include="Resources\커서2.bmp" />
     <Content Include="TextFile1.dll" />
   </ItemGroup>
   <ItemGroup>

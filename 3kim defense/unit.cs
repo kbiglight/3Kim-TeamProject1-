@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Drawing;
+using System.Windows.Forms;
 namespace _3kim_defense
 {
-    class unit
+    class unit : Form1
     {
         public string name;//유닛의 이름
         public int type;//유닛의 타입(0=근접형,1=원거리형,2=지원형 등)
@@ -23,7 +24,10 @@ namespace _3kim_defense
         public int AI;//(0=근접 우선,1=원거리 우선 등 아이디어가 있으면 추가해 주세요.)
         public int number;//유닛의 번호(번호를 바탕으로 이미지를 불러올 예정)
         public int range;//몬스터의 인식범위
-        void sumon(string aname,int atype, int amaxhp,int amaxmp,int amp,int ax,int ay,int apow,int adef,int aspd,int aline,int aAI,int anumber,int arange) {
+        public int knockback;//넉백공격의 수치(넉백저항-넉백공격 수치만큼 넉백이벤트)
+        public int Dknockback;//넉백저항의 수치
+        public PictureBox picture = new PictureBox();
+        void sumon(string aname,int atype, int amaxhp,int amaxmp,int amp,int ax,int ay,int apow,int adef,int aspd,int aline,int aAI,int anumber,int arange,int width,int height,int aknockback,int aDknockback) {//
             //몬스터의 데이더베이스에서 몬스터 정보를 불러오는 함수
             name = aname;
             type = atype;
@@ -39,6 +43,10 @@ namespace _3kim_defense
             AI = aAI;
             number = anumber;
             range = arange;
+            picture.Location = new Point(0,0);//나중에 유닛이 소환되는 장소로 변경
+            picture.Size = new Size(width, height);//유닛의 크기 지정
+            picture.Image = _3kim_defense.Properties.Resources.커서2;//나중에 유닛의 애니메이션 지정(현재는 임시로 함)
+            pictures(picture);
         }
         void umove() {
             x = x + spd;//x좌표가 spd 수치만큼 변경

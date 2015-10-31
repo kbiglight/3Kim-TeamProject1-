@@ -20,15 +20,8 @@ namespace _3kim_defense
         //이곳에 frame을 추가할 때마다 frame의 역할을 적습니다.
         //0,1=타이틀, 2=로딩 3=월드맵 
         //101=1스테이지 화면(스테이지는 100부터) 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (frame ==0) {
-                pictureBox9.Image = _3kim_defense.Properties.Resources.화면2;
-                frame = 1;
-            }
 
-        }
-
+     
         private void background_Click(object sender, EventArgs e)
         {
 
@@ -44,6 +37,16 @@ namespace _3kim_defense
         {
 
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (frame == 0)
+            {
+                pictureBox9.Image = _3kim_defense.Properties.Resources.화면2;
+                frame = 1;
+                
+            }
+
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -51,6 +54,7 @@ namespace _3kim_defense
             {
                 pictureBox9.Image = _3kim_defense.Properties.Resources.화면;
                 frame = 0;
+               
             }
         }
 
@@ -60,12 +64,23 @@ namespace _3kim_defense
             {
                 pictureBox9.Image = _3kim_defense.Properties.Resources.월드맵;
                 frame = 3;
+               
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)//기본 시간 타이머
         {
-            if (frame == 3) { }
+            if (frame == 0) { cirsur.Top = 203; cirsur.Left = 337; }
+            if (frame == 1) {cirsur.Top = 239; cirsur.Left = 338;  }
+            if (frame == 3) { cirsur.Top = 148; cirsur.Left = 215; }//커서를 1스테이지에 세트
+
         }
+        void pictures(PictureBox K) { this.Controls.Add(K); }
+        
+
     }
+
+
+
+
 }
