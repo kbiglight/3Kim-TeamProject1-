@@ -60,6 +60,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tower.cs" />
+    <Compile Include="Unit Database.cs" />
     <Compile Include="unit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,8 +77,14 @@
     <None Include="Resources\화면2.bmp" />
     <None Include="Resources\게임화면.bmp" />
     <None Include="Resources\월드맵.bmp" />
+    <None Include="Resources\아직안 클리어.bmp" />
+    <None Include="Resources\기지.bmp" />
+    <None Include="Resources\적기지.bmp" />
+    <None Include="Resources\임시유닛.bmp" />
     <Content Include="Resources\커서.bmp" />
     <None Include="Resources\커서2.bmp" />
+    <None Include="Resources\클리어.bmp" />
+    <None Include="Resources\활성화 안됨.bmp" />
     <Content Include="TextFile1.dll" />
   </ItemGroup>
   <ItemGroup>

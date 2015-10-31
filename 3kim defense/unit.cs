@@ -26,7 +26,30 @@ namespace _3kim_defense
         public int range;//몬스터의 인식범위
         public int knockback;//넉백공격의 수치(넉백저항-넉백공격 수치만큼 넉백이벤트)
         public int Dknockback;//넉백저항의 수치
+        public int live;//살았는지를 확인하는 변수 0=주금 1=삼
         public PictureBox picture = new PictureBox();
+        void uninit() {//유닛 초기화
+            name = "";
+            type = 0;
+            maxhp = 0;
+            hp = 0;
+            maxmp = 0;
+            x = 41;
+            y = 129;//기지의 위치로 좌표 설정 예정
+            pow = 0;
+            def = 0;
+            spd = 0;
+            line = 0;
+            AI = 0;
+            number = 0;
+            range = 0;
+            knockback = 0;
+            Dknockback = 0;
+            picture.Location = new Point(41, 129);//나중에 유닛이 소환되는 장소로 변경
+            picture.Size = new Size(width, height);//유닛의 크기 지정
+            picture.Image = _3kim_defense.Properties.Resources.커서2;//나중에 유닛의 애니메이션 지정(현재는 임시로 함)
+            pictures(picture);
+        }
         void sumon(string aname,int atype, int amaxhp,int amaxmp,int amp,int ax,int ay,int apow,int adef,int aspd,int aline,int aAI,int anumber,int arange,int width,int height,int aknockback,int aDknockback) {//
             //몬스터의 데이더베이스에서 몬스터 정보를 불러오는 함수
             name = aname;
@@ -34,8 +57,8 @@ namespace _3kim_defense
             maxhp = amaxhp;
             hp = maxhp;
             maxmp = amaxmp;
-            x = ax;
-            y = ay;//기지의 위치로 좌표 설정 예정
+            x = 41;
+            y = 129;//기지의 위치로 좌표 설정 예정
             pow = apow;
             def = adef;
             spd = aspd;
@@ -43,13 +66,16 @@ namespace _3kim_defense
             AI = aAI;
             number = anumber;
             range = arange;
-            picture.Location = new Point(0,0);//나중에 유닛이 소환되는 장소로 변경
+            knockback = aknockback;
+            Dknockback = aDknockback;
+            picture.Location = new Point(41,129);//나중에 유닛이 소환되는 장소로 변경
             picture.Size = new Size(width, height);//유닛의 크기 지정
             picture.Image = _3kim_defense.Properties.Resources.커서2;//나중에 유닛의 애니메이션 지정(현재는 임시로 함)
             pictures(picture);
         }
         void umove() {
             x = x + spd;//x좌표가 spd 수치만큼 변경
+            picture.Left = x;
             //이동 모션으로 이미지 변경
         }//이동
         void rangecheck(int enemyx) {//적 유닛의 x좌표
@@ -59,5 +85,27 @@ namespace _3kim_defense
                 //만약 적이 무적시간이 아니라면 데미지 판정 공격력-방어력(만약 0이하라면 1)
                 */ }//적 유닛의 x좌표가 아군 유닛의 x좌표+사정거리 내에 들어왔을 때 공격 이벤트 실행
         }
+        void testunit() {
+            name = "test";
+            type = 9999;
+            maxhp = 9999;
+            hp = 9999;
+            maxmp = 9999;
+            x = 41;
+            y = 129;//기지의 위치로 좌표 설정 예정
+            pow = 10;
+            def = 10;
+            spd = 2;
+            line = 0;
+            AI = 0;
+            number = 9999;
+            range = 10;
+            picture.Location = new Point(41, 129);//나중에 유닛이 소환되는 장소로 변경
+            picture.Size = new Size(45, 70);//유닛의 크기 지정
+            picture.Image = _3kim_defense.Properties.Resources.임시유닛;//나중에 유닛의 애니메이션 지정(현재는 임시로 함)
+            pictures(picture);
+        }
     }
+
 }
+

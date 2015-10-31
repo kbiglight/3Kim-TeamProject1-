@@ -20,7 +20,7 @@ namespace _3kim_defense
         //이곳에 frame을 추가할 때마다 frame의 역할을 적습니다.
         //0,1=타이틀, 2=로딩 3=월드맵 
         //101=1스테이지 화면(스테이지는 100부터) 
-
+        unit[] Player = new unit[100];//유닛 개수를 지정
      
         private void background_Click(object sender, EventArgs e)
         {
@@ -70,14 +70,23 @@ namespace _3kim_defense
 
         private void timer1_Tick(object sender, EventArgs e)//기본 시간 타이머
         {
+            pictureBox9.SendToBack();
             if (frame == 0) { cirsur.Top = 203; cirsur.Left = 337; }
             if (frame == 1) {cirsur.Top = 239; cirsur.Left = 338;  }
             if (frame == 3) { cirsur.Top = 148; cirsur.Left = 215; }//커서를 1스테이지에 세트
 
         }
-        void pictures(PictureBox K) { this.Controls.Add(K); }
-        
 
+        public void pictures(PictureBox K) { this.Controls.Add(K); }
+        PictureBox Kk = new PictureBox();
+        private void button4_Click(object sender, EventArgs e)
+        {
+          
+            Kk.SetBounds(1, 1, 120, 120);
+            Kk.Image = _3kim_defense.Properties.Resources.게임화면;
+            
+            Controls.Add(Kk);
+        }
     }
 
 
