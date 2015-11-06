@@ -23,11 +23,15 @@ namespace _3kim_defense
         public int line;//유닛의 생성라인
         public int AI;//(0=근접 우선,1=원거리 우선 등 아이디어가 있으면 추가해 주세요.)
         public int number;//유닛의 번호(번호를 바탕으로 이미지를 불러올 예정)
+        public int frame1;//공격모션(대기)시에 걸리는 시간
+        public int frame2;//공격모션(공격후)시에 걸리는 시간
         public int range;//몬스터의 인식범위
         public int knockback;//넉백공격의 수치(넉백저항-넉백공격 수치만큼 넉백이벤트)
         public int Dknockback;//넉백저항의 수치
         public int live;//살았는지를 확인하는 변수 0=주금 1=삼
         public int liven;//소환된 물체인지 따로 판정
+        public int motion;//유닛의 현재 상황을 표시하는 변수 0=이동,1=공격
+        public int aim;//공격시 표적을 체크
         public void uninit() {//유닛 초기화
             name = "";
             type = 0;
@@ -75,7 +79,6 @@ namespace _3kim_defense
             if (live == 1)
             {
                 x = x + spd;//x좌표가 spd 수치만큼 변경
-                picture.Left = x;
             }
             //이동 모션으로 이미지 변경
         }//이동
@@ -86,6 +89,49 @@ namespace _3kim_defense
                 //만약 적이 무적시간이 아니라면 데미지 판정 공격력-방어력(만약 0이하라면 1)
                 */ }//적 유닛의 x좌표가 아군 유닛의 x좌표+사정거리 내에 들어왔을 때 공격 이벤트 실행
         }
+
+
+
+        /// //공격 루트
+        /// 
+        /////
+        int XIN() { return x; }//x축을 리턴
+        void rangechecking(int K,int NUMB)//K=적 캐릭터의 X축을 받아옴,동시에 적 캐릭터의 번호도 받아옴(배열 번호)
+        {
+            if (motion == 0)//이동 상황에만 체크한다.
+            {
+                if (x < K && x + range >= K)
+                {//만약 적 캐릭터의 X축이 아군 캐릭터의 범위 안에 들었을 경우
+                    motion = 1;//공격 모션으로 전환
+                    aim = NUMB;
+
+                }
+                else { aim = 0; }
+            }
+        }
+
+
+
+        /// //데미지 판정
+        /// 
+        /////
+        int hit() { return def; }//방어력을 리턴
+
+        int attackcheck(int K)//상대방의 방어력을 불러와 공격력에서 뺀 후 리턴
+        {
+            int dam;
+            dam = pow - K;//
+            if (dam <= 0) { dam = 1; }//만약 1이하이면 데미지 1만 받음
+            return dam;//최종 데미지를 리턴
+        }
+
+
+        void hitcheck(int K)//위에서 리턴받은 최종 데미지를 체크,동시에 사망판정
+        {
+            hp = hp - K;//
+            if (hp <= 0) { live = 0; }//hp가 0이하이면 죽었다고 체크
+        }
+
         public void testunit() {
             name = "test";
             type = 9999;

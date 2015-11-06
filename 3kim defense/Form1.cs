@@ -15,6 +15,7 @@ namespace _3kim_defense
         public Form1()
         {
             InitializeComponent();
+            Test = new unit();
         }
         int frame;//화면을 제어하는 변수입니다. 0=타이틀,1=설정 등 frame에 따라 장면이 나누어지게 할 예정입니다.
         //이곳에 frame을 추가할 때마다 frame의 역할을 적습니다.
