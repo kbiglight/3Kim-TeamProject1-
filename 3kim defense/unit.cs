@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 namespace _3kim_defense
 {
-    class unit : Form1
+    class unit 
     {
         public string name;//유닛의 이름
         public int type;//유닛의 타입(0=근접형,1=원거리형,2=지원형 등)
@@ -25,6 +25,7 @@ namespace _3kim_defense
         public int number;//유닛의 번호(번호를 바탕으로 이미지를 불러올 예정)
         public int frame1;//공격모션(대기)시에 걸리는 시간
         public int frame2;//공격모션(공격후)시에 걸리는 시간
+        public int frame3;//원래대로 돌아오는 시간
         public int range;//몬스터의 인식범위
         public int knockback;//넉백공격의 수치(넉백저항-넉백공격 수치만큼 넉백이벤트)
         public int Dknockback;//넉백저항의 수치
@@ -51,6 +52,9 @@ namespace _3kim_defense
             Dknockback = 0;
             live = 0;
             liven = 0;
+            frame1 = 0;
+            frame2 = 0;
+            frame3 = 0;
            
         }
         public void sumon(string aname,int atype, int amaxhp,int amaxmp,int amp,int ax,int ay,int apow,int adef,int aspd,int aline,int aAI,int anumber,int arange,int width,int height,int aknockback,int aDknockback) {//
@@ -95,8 +99,8 @@ namespace _3kim_defense
         /// //공격 루트
         /// 
         /////
-        int XIN() { return x; }//x축을 리턴
-        void rangechecking(int K,int NUMB)//K=적 캐릭터의 X축을 받아옴,동시에 적 캐릭터의 번호도 받아옴(배열 번호)
+        public int XIN() { return x; }//x축을 리턴
+        public void rangechecking(int K,int NUMB)//K=적 캐릭터의 X축을 받아옴,동시에 적 캐릭터의 번호도 받아옴(배열 번호)
         {
             if (motion == 0)//이동 상황에만 체크한다.
             {
@@ -109,15 +113,58 @@ namespace _3kim_defense
                 else { aim = 0; }
             }
         }
-
+        public void testunit_sumon1() {
+            name = "test1";
+            type = 0;
+            maxhp = 20;
+            hp = maxhp;
+            maxmp = 20;
+            x = 41;
+            y = 129;//기지의 위치로 좌표 설정 예정
+            pow = 2;
+            def = 1;
+            spd = 2;
+            line = 0;
+            AI = 0;
+            number = 1;
+            range = 20;
+            knockback = 0;
+            Dknockback = 0;
+            live = 1;
+            liven = 1;
+            frame1 = 0;
+            frame2 = 3;
+        }
+        public void testunit_sumon2() {
+            name = "test1";
+            type = 1;
+            maxhp = 20;
+            hp = maxhp;
+            maxmp = 20;
+            x = 41;
+            y = 129;//기지의 위치로 좌표 설정 예정
+            pow = 2;
+            def = 1;
+            spd = 2;
+            line = 0;
+            AI = 0;
+            number = 1;
+            range = 20;
+            knockback = 0;
+            Dknockback = 0;
+            live = 1;
+            liven = 1;
+            frame1 = 0;
+            frame2 = 3;
+        }
 
 
         /// //데미지 판정
         /// 
         /////
-        int hit() { return def; }//방어력을 리턴
-
-        int attackcheck(int K)//상대방의 방어력을 불러와 공격력에서 뺀 후 리턴
+        public int hit() { return def; }//방어력을 리턴
+        public int hited() { return pow; }//공격력을 리턴
+        public int attackcheck(int K)//상대방의 방어력을 불러와 공격력에서 뺀 후 리턴
         {
             int dam;
             dam = pow - K;//
@@ -126,12 +173,18 @@ namespace _3kim_defense
         }
 
 
-        void hitcheck(int K)//위에서 리턴받은 최종 데미지를 체크,동시에 사망판정
+        public void hitcheck(int K)//위에서 리턴받은 최종 데미지를 체크,동시에 사망판정
         {
             hp = hp - K;//
             if (hp <= 0) { live = 0; }//hp가 0이하이면 죽었다고 체크
         }
+        public void motionset(int K) { motion = K; }//모션을 밖에서 변경하는법
+        public int  motionReturn() { return motion; }
+        public void motionChange() { if (motion == 1|| frame1 >= frame2) { motion = 2; } }//모션변경
+        public void framego() { frame1++; }//1공격대기
 
+        public void motionBack() { if (motion == 3 || frame1 >= frame3) { motion = 0; } }//원래대로 돌아옴
+        /// </summary>
         public void testunit() {
             name = "test";
             type = 9999;
