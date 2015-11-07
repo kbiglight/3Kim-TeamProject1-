@@ -136,32 +136,47 @@ namespace _3kim_defense
             TargetBX = 999;//B는 오른쪽에서 시작하기 때문
             TargetA = 0;
             TargetB = 0;
-            for (int i = 0; i< PlayerCount; i++) {//유닛들 이동
-                int GL = Player[i].motionReturn();//유닛의 모션 변수를 불러올거임
+            int Live = 0;//유닛의 생사 결정
+            for (int i = 0; i < PlayerCount; i++)
+            {//유닛들 이동
+                Live = Player[i].livecheck();//live를 리턴
+                if (Live == 1)//살아있을 때만 움직인다. for문마다 넣어줌
+                {
+                    int GL = Player[i].motionReturn();//유닛의 모션 변수를 불러올거임
 
-                if (GL == 0) { Player[i].umove(); }//모션이 0일 경우에만 이동
-                if (Player[i].XIN() > TargetBX) { TargetBX = Player[i].XIN();TargetB = i; }//타겟의 X값이 가장 큰값을 찾는다.
+                    if (GL == 0) { Player[i].umove(); }//모션이 0일 경우에만 이동
+                    if (Player[i].XIN() > TargetBX) { TargetBX = Player[i].XIN(); TargetB = i; }//타겟의 X값이 가장 큰값을 찾는다.
+                }
             }//이동 페이즈
             for (int i = 0; i < PlayerCount; i++)//감지 후 모션변경 페이즈
             {
-                Player[i].rangechecking(TargetA, TargetAX);
-                
-                Player[i].framego();//프레임++
-                Player[i].motionChange();//모션이 1인데 프레임이 넘은 사람은 2로
-            }
-            for (int i = 0; i < PlayerCount; i++) {//실제 공격 페이즈
-                int GL=Player[i].motionReturn();//유닛의 모션 변수를 불러올거임
-                if (GL == 2)
+                Live = Player[i].livecheck();//live를 리턴
+                if (Live == 1)
                 {
-                    int PPOWER;//빠워 변수
-                    Player[i].motionset(3);//모션을 3으로 변경,중복 공격 방지를 위함
-                    PPOWER = Player[i].hited();//플레이어의 공격력을 리턴
-                    /*
-                    여기는 가상의 적 클래스가 만들어졌다고 가정하고 씁니다.
-                    에너미[TargetA].hit(pow);를 실행//받은 데미지를 방어력에 빼서 처리하는 함수+0이하가 되면 죽게 처리하는 함수
-                    
-                */
-                }//공격을 했다는 표시가 나오면 
+                    Player[i].rangechecking(TargetA, TargetAX);
+
+                    Player[i].framego();//프레임++
+                    Player[i].motionChange();//모션이 1인데 프레임이 넘은 사람은 2로
+                }
+            }
+            for (int i = 0; i < PlayerCount; i++)
+            {//실제 공격 페이즈
+                Live = Player[i].livecheck();//live를 리턴
+                if (Live == 1)//살아있을 때만 움직인다.
+                {
+                    int GL = Player[i].motionReturn();//유닛의 모션 변수를 불러올거임
+                    if (GL == 2)
+                    {
+                        int PPOWER;//빠워 변수
+                        Player[i].motionset(3);//모션을 3으로 변경,중복 공격 방지를 위함
+                        PPOWER = Player[i].hited();//플레이어의 공격력을 리턴
+                                                   /*
+                                                   여기는 가상의 적 클래스가 만들어졌다고 가정하고 씁니다.
+                                                   에너미[TargetA].hit(pow);를 실행//받은 데미지를 방어력에 빼서 처리하는 함수+0이하가 되면 죽게 처리하는 함수
+
+                                               */
+                    }//공격을 했다는 표시가 나오면 
+                }
             }
         }
          

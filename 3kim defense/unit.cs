@@ -162,6 +162,7 @@ namespace _3kim_defense
         /// //데미지 판정
         /// 
         /////
+        public int livecheck() { return live; }
         public int hit() { return def; }//방어력을 리턴
         public int hited() { return pow; }//공격력을 리턴
         public int attackcheck(int K)//상대방의 방어력을 불러와 공격력에서 뺀 후 리턴
