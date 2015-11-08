@@ -129,14 +129,14 @@ namespace _3kim_defense
         {
             name = "test1";
             type = 0;
-            maxhp = 20;
+            maxhp = 40;
             hp = maxhp;
             maxmp = 20;
             x = 483;
             y = 129;//기지의 위치로 좌표 설정 예정
             pow = 2;
             def = 1;
-            spd = 2;
+            spd = 4;
             line = 0;
             AI = 0;
             number = 1;
@@ -147,14 +147,14 @@ namespace _3kim_defense
             liven = 1;
             frame1 = 0;
             frame2 = 3;
-            
+            frame3 = 10;
             motion = 0;
         }
         public void testunit_sumon2()
         {
             name = "test1";
             type = 1;
-            maxhp = 20;
+            maxhp = 2000;
             hp = maxhp;
             maxmp = 20;
             x = 483;
@@ -171,7 +171,7 @@ namespace _3kim_defense
             live = 1;
             liven = 1;
             frame1 = 0;
-            frame2 = 3;
+            frame2 = 30;
             frame3 = 100;
             motion = 0;
         }
@@ -203,10 +203,10 @@ namespace _3kim_defense
         public void motionset(int K) { motion = K; }//모션을 밖에서 변경하는법
         public int motionReturn() { return motion; }
         public int frameset() { return frame1; }
-        public void motionChange() { if (motion == 1 || frame1 >= frame2) { motion = 2; } else if (frame1 < frame2) { motion = 0; } }//모션변경
+        public void motionChange() { if (motion == 1 && frame1 >= frame2) { motion = 2; } else if (frame1 < frame2) { motion = 0; } }//모션변경
         public void framego() { frame1++; }//1공격대기
 
-        public void motionBack() { if (motion == 3 || frame1 > frame3) { motion = 0; frame1 = 0; } }//원래대로 돌아옴
+        public void motionBack() { if (motion == 3 && frame1 > frame3) { motion = 0; frame1 = 0; } }//원래대로 돌아옴
         /// </summary>
         public void testunit()
         {

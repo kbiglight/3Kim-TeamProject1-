@@ -139,6 +139,9 @@ namespace _3kim_defense
             label19.Text = H.ToString();
             H = Enemy[0].hpReturn();
             label20.Text = H.ToString();
+            P = T1.towethp();
+            label21.Text = P.ToString();
+            label22.Text = TargetB.ToString();
 
         }
 
@@ -147,7 +150,7 @@ namespace _3kim_defense
         private void button4_Click(object sender, EventArgs e)
         {
 
-            Player[0].testunit_sumon1();
+            Player[PlayerCount].testunit_sumon1();
             PlayerCount++;
 
         }
@@ -171,8 +174,7 @@ namespace _3kim_defense
         {//타겟은 시시때때로 변경되어야 합니다.
             Timer++;
            
-            TargetBX = 26;//B는 오른쪽에서 시작하기 때문
-            TargetB = 101;//목표를 초기화
+            
             int Live = 0;//유닛의 생사 결정
 
             //여기는 아군측의 행동입니다.
@@ -189,7 +191,7 @@ namespace _3kim_defense
                     if (Player[i].XIN() > TargetBX) { TargetBX = Player[i].XIN(); TargetB = i; }//타겟의 X값이 가장 큰값을 찾는다.
                 }
             }//이동 페이즈
-            if (TargetBX < 36) { TargetBX = 101; }//만약 특정 범위 내라면 타겟은 타워로 변경
+            if (TargetBX < 40) { TargetB = 101; }//만약 특정 범위 내라면 타겟은 타워로 변경
             for (int i = 0; i < PlayerCount; i++)//감지 후 모션변경 페이즈
             {
                 Live = Player[i].livecheck();//live를 리턴
@@ -239,8 +241,8 @@ namespace _3kim_defense
 
             int GPP;
             GPP=AII.AImovingTest(Timer);
-            if (GPP == 0) { } else if (GPP == 1) { Enemy[0].testunit_sumon1(); EnemyCount++; }
-
+            if (GPP == 0) { } else if (GPP == 1) { Enemy[EnemyCount].testunit_sumon1(); EnemyCount++; }
+            if (GPP == 2) { Enemy[EnemyCount].testunit_sumon2(); EnemyCount++; }
 
 
 
@@ -262,6 +264,7 @@ namespace _3kim_defense
                     if (Enemy[i].XIN() < TargetAX) { TargetAX = Enemy[i].XIN(); TargetA = i; }//타겟의 X값이 가장 큰값을 찾는다.
                 }
             }//이동 페이즈
+            if (TargetAX < 57) { TargetB = 101; }
             for (int i = 0; i < EnemyCount; i++)//감지 후 모션변경 페이즈
             {
                 Live = Enemy[i].livecheck();//live를 리턴
@@ -284,13 +287,13 @@ namespace _3kim_defense
                         int PPOWER;//빠워 변수
                         Enemy[i].motionset(3);//모션을 3으로 변경,중복 공격 방지를 위함
                         PPOWER = Enemy[i].hited();//플레이어의 공격력을 리턴
-                        if (TargetA == 101)
+                        if (TargetB == 101)
                         {
                             T1.towerdamage(PPOWER);//타겟이 이럴경우 타워에게
                         }
-                        else if(Enemy[TargetA].hpReturn()>0)
+                        else if(Player[TargetB].livecheck()==1)
                         {
-                            Player[TargetA].hitcheck(PPOWER);//타겟이 아닐경우 적에게
+                            Player[TargetB].hitcheck(PPOWER);//타겟이 아닐경우 적에게
                         }
                         /*
                         여기는 가상의아군 클래스가 만들어졌다고 가정하고 씁니다.
@@ -300,6 +303,8 @@ namespace _3kim_defense
                     }//공격을 했다는 표시가 나오면 
                 }
             }
+            TargetBX = 26;//B는 오른쪽에서 시작하기 때문
+            TargetB = 101;//목표를 초기화
 
 
 

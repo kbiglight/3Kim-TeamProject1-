@@ -127,12 +127,12 @@ namespace _3kim_defense
         public void testunit_sumon1() {
             name = "test1";
             type = 0;
-            maxhp = 20;
+            maxhp = 11;
             hp = maxhp;
             maxmp = 20;
             x = 41;
             y = 129;//기지의 위치로 좌표 설정 예정
-            pow = 4;
+            pow = 10;
             def = 1;
             spd = 4;
             line = 0;

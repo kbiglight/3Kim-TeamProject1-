@@ -66,6 +66,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cirsur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -319,7 +321,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(170, 330);
+            this.label11.Location = new System.Drawing.Point(174, 330);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(19, 12);
             this.label11.TabIndex = 18;
@@ -328,7 +330,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(207, 330);
+            this.label12.Location = new System.Drawing.Point(197, 331);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(44, 12);
             this.label12.TabIndex = 19;
@@ -406,11 +408,31 @@
             this.label20.TabIndex = 27;
             this.label20.Text = "label20";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(235, 330);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(44, 12);
+            this.label21.TabIndex = 28;
+            this.label21.Text = "label21";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(522, 186);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(44, 12);
+            this.label22.TabIndex = 29;
+            this.label22.Text = "label22";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(545, 349);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
@@ -502,5 +524,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
     }
 }

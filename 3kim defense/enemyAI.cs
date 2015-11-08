@@ -11,8 +11,8 @@ namespace _3kim_defense
         public int AImovingTest(int G)
         {
             int k=0;
-            if (G == 12) { k = 1; }
-
+            if (G%15==1) { k = 1; }
+            if (G ==50) { k = 2; }
             return k;
         }
     }
