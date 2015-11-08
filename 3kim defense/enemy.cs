@@ -60,16 +60,16 @@ namespace _3kim_defense
             motion = 0;
 
         }
-        public void sumon(string aname, int atype, int amaxhp, int amaxmp, int amp, int ax, int ay, int apow, int adef, int aspd, int aline, int aAI, int anumber, int arange, int width, int height, int aknockback, int aDknockback)
-        {//
-            //몬스터의 데이더베이스에서 몬스터 정보를 불러오는 함수
+        public void sumon(string aname, int atype, int amaxhp, int amaxmp, int amp, int ax, int ay, int apow, int adef, int aspd, int aline, int aAI, 
+                                            int anumber, int arange, int width, int height, int aknockback, int aDknockback) // 몬스터의 데이더베이스에서 몬스터 정보를 불러오는 함수
+        {
             name = aname;
             type = atype;
             maxhp = amaxhp;
             hp = maxhp;
             maxmp = amaxmp;
             x = 41;
-            y = 129;//기지의 위치로 좌표 설정 예정
+            y = 129; // 기지의 위치로 좌표 설정 예정
             pow = apow;
             def = adef;
             spd = aspd;
@@ -87,36 +87,38 @@ namespace _3kim_defense
         {
             if (motion==0 && x > 30&&x>KNG)
             {
-                x = x - spd;//x좌표가 spd 수치만큼 변경
-                //enemy의 움직임은 -로갑니다.
+                x = x - spd;// x좌표가 spd 수치만큼 변경
+                                   // enemy의 움직임은 -로갑니다.
                 if (frame1 > frame3) { frame1 = 0; }
-
             }
-            //이동 모션으로 이미지 변경
-        }//이동
-        void rangecheck(int enemyx)
-        {//적 유닛의 x좌표
-            if (enemyx > x + range)
-            {/*공격 이벤트
-                attack();//이동 모션에서 공격 모션으로 변경
-                //공격 모션이 끝난 후 판정
-                //만약 적이 무적시간이 아니라면 데미지 판정 공격력-방어력(만약 0이하라면 1)
+            // 이동 모션으로 이미지 변경
+        } // 이동
+        void rangecheck(int enemyx) // 적 유닛의 x좌표
+        { 
+            if (enemyx > x + range) // 적 유닛의 x좌표가 아군 유닛의 x좌표+사정거리 내에 들어왔을 때 공격 이벤트 실행
+            {
+                /*
+                    공격 이벤트
+                    attack();//이동 모션에서 공격 모션으로 변경
+                    공격 모션이 끝난 후 판정
+                    만약 적이 무적시간이 아니라면 데미지 판정 공격력-방어력(만약 0이하라면 1)
                 */
-            }//적 유닛의 x좌표가 아군 유닛의 x좌표+사정거리 내에 들어왔을 때 공격 이벤트 실행
+            }
         }
 
 
 
-        /// //공격 루트
-        /// 
+        ///// 공격 루트
+        ///// 
         /////
-        public int XIN() { return x; }//x축을 리턴
-        public void rangechecking(int NUMB, int K)//K=적 캐릭터의 X축을 받아옴,동시에 적 캐릭터의 번호도 받아옴(배열 번호)
+        public int XIN() { return x; } // x축을 리턴
+        public void rangechecking(int NUMB, int K) // K = 적 캐릭터의 X축을 받아옴, 동시에 적 캐릭터의 번호도 받아옴(배열 번호)
         {
             if (motion == 0)//이동 상황에만 체크한다.
             {
-                if (x >= K && x - range <= K)//적의 인식범위는 아군의 인식범위와는 반대방향입니다.
-                {//만약 적 캐릭터의 X축이 아군 캐릭터의 범위 안에 들었을 경우
+                if (x >= K && x - range <= K) // 적의 인식범위는 아군의 인식범위와는 반대방향입니다.
+                                                                    // 만약 적 캐릭터의 X축이 아군 캐릭터의 범위 안에 들었을 경우
+                {
                     motion = 1;//공격 모션으로 전환
                     aim = NUMB;
 
@@ -158,7 +160,7 @@ namespace _3kim_defense
             hp = maxhp;
             maxmp = 20;
             x = 483;
-            y = 129;//기지의 위치로 좌표 설정 예정
+            y = 129; // 기지의 위치로 좌표 설정 예정
             pow = 2;
             def = 1;
             spd = 2;
@@ -181,32 +183,33 @@ namespace _3kim_defense
         /// 
         /////
         public int livecheck() { return live; }
-        public int hit() { return def; }//방어력을 리턴
-        public int hited() { return pow; }//공격력을 리턴
+        public int hit() { return def; } // 방어력을 리턴
+        public int hited() { return pow; } // 공격력을 리턴
         public int hpReturn() { return hp; }
-        public int attackcheck(int K)//상대방의 방어력을 불러와 공격력에서 뺀 후 리턴
+
+        public int attackcheck(int K) // 상대방의 방어력을 불러와 공격력에서 뺀 후 리턴
         {
             int dam;
-            dam = pow - K;//
-            if (dam <= 0) { dam = 1; }//만약 1이하이면 데미지 1만 받음
-            return dam;//최종 데미지를 리턴
+            dam = pow - K;
+            if (dam <= 0) { dam = 1; } // 만약 1이하이면 데미지 1만 받음
+            return dam; // 최종 데미지를 리턴
         }
 
 
-        public void hitcheck(int K)//위에서 리턴받은 최종 데미지를 체크,동시에 사망판정
+        public void hitcheck(int K) // 위에서 리턴받은 최종 데미지를 체크,동시에 사망판정
         {
             int GGg = K-def;
             if (GGg <= 0) { GGg = 1; }
-            hp = hp - GGg;//
+            hp = hp - GGg;
             if (hp <= 0) { live = 0; }
         }
-        public void motionset(int K) { motion = K; }//모션을 밖에서 변경하는법
+        public void motionset(int K) { motion = K; } // 모션을 밖에서 변경하는법
         public int motionReturn() { return motion; }
         public int frameset() { return frame1; }
-        public void motionChange() { if (motion == 1 && frame1 >= frame2) { motion = 2; } else if (frame1 < frame2) { motion = 0; } }//모션변경
-        public void framego() { frame1++; }//1공격대기
+        public void motionChange() { if (motion == 1 && frame1 >= frame2) { motion = 2; } else if (frame1 < frame2) { motion = 0; } } // 모션변경
+        public void framego() { frame1++; } // 1 공격대기
 
-        public void motionBack() { if (motion == 3 && frame1 > frame3) { motion = 0; frame1 = 0; } }//원래대로 돌아옴
+        public void motionBack() { if (motion == 3 && frame1 > frame3) { motion = 0; frame1 = 0; } } // 원래대로 돌아옴
         /// </summary>
         public void testunit()
         {
@@ -216,7 +219,7 @@ namespace _3kim_defense
             hp = 9999;
             maxmp = 9999;
             x = 41;
-            y = 129;//기지의 위치로 좌표 설정 예정
+            y = 129; // 기지의 위치로 좌표 설정 예정
             pow = 10;
             def = 10;
             spd = 2;
@@ -224,7 +227,6 @@ namespace _3kim_defense
             AI = 0;
             number = 9999;
             range = 10;
-
         }
     }
 }

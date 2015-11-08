@@ -134,7 +134,7 @@ namespace _3kim_defense
             y = 129;//기지의 위치로 좌표 설정 예정
             pow = 10;
             def = 1;
-            spd = 4;
+            spd = 10;
             line = 0;
             AI = 0;
             number = 1;
@@ -150,14 +150,14 @@ namespace _3kim_defense
         public void testunit_sumon2() {
             name = "test1";
             type = 1;
-            maxhp = 20;
+            maxhp = 2000;
             hp = maxhp;
             maxmp = 20;
             x = 41;
             y = 129;//기지의 위치로 좌표 설정 예정
-            pow = 2;
+            pow = 12;
             def = 1;
-            spd = 2;
+            spd = 5;
             line = 0;
             AI = 0;
             number = 1;
@@ -168,6 +168,7 @@ namespace _3kim_defense
             liven = 1;
             frame1 = 0;
             frame2 = 3;
+            motion = 0;
         }
 
 
