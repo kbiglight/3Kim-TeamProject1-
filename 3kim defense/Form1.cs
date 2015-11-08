@@ -23,7 +23,9 @@ namespace _3kim_defense
         //0,1=타이틀, 2=로딩 3=월드맵 
         //101=1스테이지 화면(스테이지는 100부터) 
         unit[] Player = new unit[100];//유닛 개수를 지정
+        enemy[] Enemy = new enemy[100];//적 개수를 지정
         int PlayerCount;//플레이어 개체의 개수를 지정
+        int EnemyCount;//적 개체수를 지정
         int TargetA;//아군의 공격목표
         int TargetB;//적군의 공격목표
         int TargetAX;//아군 목표의 x값
@@ -38,10 +40,13 @@ namespace _3kim_defense
             pictureBox9.Image = _3kim_defense.Properties.Resources.화면;
             frame = 0;
             PlayerCount = 0;
-            
+            EnemyCount = 0;
             for (int G = 0; G < 100; G++) {
                 Player[G] = new unit();
             }//유닛들을 다 지정
+            for (int G = 0; G < 100; G++) {
+                Enemy[G] = new enemy();
+            }//적들을 다 지정
 
             
         }
@@ -121,7 +126,7 @@ namespace _3kim_defense
          private void startUp_Tick(object sender, EventArgs e)//게임시작전에 해야할일
         {
             for (int GGG=0; GGG < 100; GGG++) { Player[GGG].uninit(); }
-            //이쪽에 몬스터도 게시한다.
+            for (int GGG = 0; GGG < 100; GGG++) { Enemy[GGG].uninit(); }//유닛과 적 초기화
             TargetAX = 0;
             TargetBX = 999;//B는 오른쪽에서 시작하기 때문
             TargetA = 0;
@@ -137,6 +142,9 @@ namespace _3kim_defense
             TargetA = 0;
             TargetB = 0;
             int Live = 0;//유닛의 생사 결정
+
+            //여기는 아군측의 행동입니다.
+
             for (int i = 0; i < PlayerCount; i++)
             {//유닛들 이동
                 Live = Player[i].livecheck();//live를 리턴
@@ -178,6 +186,58 @@ namespace _3kim_defense
                     }//공격을 했다는 표시가 나오면 
                 }
             }
+
+
+            //여기서부턴 적군측 움직임
+
+            for (int i = 0; i < EnemyCount; i++)
+            {//유닛들 이동
+                Live = Enemy[i].livecheck();//live를 리턴
+                if (Live == 1)//살아있을 때만 움직인다. for문마다 넣어줌
+                {
+                    int GL = Enemy[i].motionReturn();//유닛의 모션 변수를 불러올거임
+
+                    if (GL == 0) { Enemy[i].umove(); }//모션이 0일 경우에만 이동
+                    if (Enemy[i].XIN() > TargetBX) { TargetBX = Enemy[i].XIN(); TargetB = i; }//타겟의 X값이 가장 큰값을 찾는다.
+                }
+            }//이동 페이즈
+            for (int i = 0; i < EnemyCount; i++)//감지 후 모션변경 페이즈
+            {
+                Live = Enemy[i].livecheck();//live를 리턴
+                if (Live == 1)
+                {
+                    Enemy[i].rangechecking(TargetA, TargetAX);
+
+                    Enemy[i].framego();//프레임++
+                    Enemy[i].motionChange();//모션이 1인데 프레임이 넘은 사람은 2로
+                }
+            }
+            for (int i = 0; i < EnemyCount; i++)
+            {//실제 공격 페이즈
+                Live = Enemy[i].livecheck();//live를 리턴
+                if (Live == 1)//살아있을 때만 움직인다.
+                {
+                    int GL = Enemy[i].motionReturn();//유닛의 모션 변수를 불러올거임
+                    if (GL == 2)
+                    {
+                        int PPOWER;//빠워 변수
+                        Enemy[i].motionset(3);//모션을 3으로 변경,중복 공격 방지를 위함
+                        PPOWER = Enemy[i].hited();//플레이어의 공격력을 리턴
+                                                   /*
+                                                   여기는 가상의아군 클래스가 만들어졌다고 가정하고 씁니다.
+                                                   에너미[TargetA].hit(pow);를 실행//받은 데미지를 방어력에 빼서 처리하는 함수+0이하가 되면 죽게 처리하는 함수
+
+                                               */
+                    }//공격을 했다는 표시가 나오면 
+                }
+            }
+
+
+
+
+
+
+
         }
          
         //클릭하면 유닛 소환
