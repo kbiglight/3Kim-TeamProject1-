@@ -84,7 +84,7 @@ namespace _3kim_defense
         }
         public void umove()
         {
-            if (live == 1)
+            if (motion==0 && x > 30)
             {
                 x = x - spd;//x좌표가 spd 수치만큼 변경
                 //enemy의 움직임은 -로갑니다.
@@ -110,7 +110,7 @@ namespace _3kim_defense
         /// 
         /////
         public int XIN() { return x; }//x축을 리턴
-        public void rangechecking(int K, int NUMB)//K=적 캐릭터의 X축을 받아옴,동시에 적 캐릭터의 번호도 받아옴(배열 번호)
+        public void rangechecking(int NUMB, int K)//K=적 캐릭터의 X축을 받아옴,동시에 적 캐릭터의 번호도 받아옴(배열 번호)
         {
             if (motion == 0)//이동 상황에만 체크한다.
             {
@@ -130,7 +130,7 @@ namespace _3kim_defense
             maxhp = 20;
             hp = maxhp;
             maxmp = 20;
-            x = 41;
+            x = 483;
             y = 129;//기지의 위치로 좌표 설정 예정
             pow = 2;
             def = 1;
@@ -153,7 +153,7 @@ namespace _3kim_defense
             maxhp = 20;
             hp = maxhp;
             maxmp = 20;
-            x = 41;
+            x = 483;
             y = 129;//기지의 위치로 좌표 설정 예정
             pow = 2;
             def = 1;
@@ -177,6 +177,7 @@ namespace _3kim_defense
         public int livecheck() { return live; }
         public int hit() { return def; }//방어력을 리턴
         public int hited() { return pow; }//공격력을 리턴
+        public int hpReturn() { return hp; }
         public int attackcheck(int K)//상대방의 방어력을 불러와 공격력에서 뺀 후 리턴
         {
             int dam;
@@ -196,7 +197,7 @@ namespace _3kim_defense
         public void motionChange() { if (motion == 1 || frame1 >= frame2) { motion = 2; } }//모션변경
         public void framego() { frame1++; }//1공격대기
 
-        public void motionBack() { if (motion == 3 || frame1 >= frame3) { motion = 0; } }//원래대로 돌아옴
+        public void motionBack() { if (motion == 3 || frame1 >= frame3) { motion = 0; frame1 = 0; } }//원래대로 돌아옴
         /// </summary>
         public void testunit()
         {

@@ -39,7 +39,7 @@ namespace _3kim_defense
             maxhp = 0;
             hp = 0;
             maxmp = 0;
-            x = 41;
+            x = 0;
             y = 129;//기지의 위치로 좌표 설정 예정
             pow = 0;
             def = 0;
@@ -55,6 +55,7 @@ namespace _3kim_defense
             frame1 = 0;
             frame2 = 0;
             frame3 = 0;
+            motion = 0;
            
         }
         public void sumon(string aname,int atype, int amaxhp,int amaxmp,int amp,int ax,int ay,int apow,int adef,int aspd,int aline,int aAI,int anumber,int arange,int width,int height,int aknockback,int aDknockback) {//
@@ -80,9 +81,10 @@ namespace _3kim_defense
             
         }
         public void umove() {
-            if (live == 1)
+            if (motion == 0&&x<480)
             {
                 x = x + spd;//x좌표가 spd 수치만큼 변경
+                if (frame1 >= frame3) { frame1 = 0; }
             }
             //이동 모션으로 이미지 변경
         }//이동
@@ -104,10 +106,10 @@ namespace _3kim_defense
         {
             if (motion == 0)//이동 상황에만 체크한다.
             {
-                if (x < K && x + range >= K)
+                if (x < NUMB && x + range >= NUMB)
                 {//만약 적 캐릭터의 X축이 아군 캐릭터의 범위 안에 들었을 경우
                     motion = 1;//공격 모션으로 전환
-                    aim = NUMB;
+                    aim = K;
 
                 }
                 else { aim = 0; }
@@ -123,7 +125,7 @@ namespace _3kim_defense
             y = 129;//기지의 위치로 좌표 설정 예정
             pow = 2;
             def = 1;
-            spd = 2;
+            spd = 4;
             line = 0;
             AI = 0;
             number = 1;
@@ -134,6 +136,7 @@ namespace _3kim_defense
             liven = 1;
             frame1 = 0;
             frame2 = 3;
+            motion = 0;
         }
         public void testunit_sumon2() {
             name = "test1";
@@ -163,6 +166,7 @@ namespace _3kim_defense
         /// 
         /////
         public int livecheck() { return live; }
+        public int hpReturn() { return hp; }//hp를 리턴
         public int hit() { return def; }//방어력을 리턴
         public int hited() { return pow; }//공격력을 리턴
         public int attackcheck(int K)//상대방의 방어력을 불러와 공격력에서 뺀 후 리턴
@@ -181,10 +185,10 @@ namespace _3kim_defense
         }
         public void motionset(int K) { motion = K; }//모션을 밖에서 변경하는법
         public int  motionReturn() { return motion; }
-        public void motionChange() { if (motion == 1|| frame1 >= frame2) { motion = 2; } }//모션변경
+        public void motionChange() { if (motion == 1&& frame1 >= frame2) { motion = 2; } }//모션변경
         public void framego() { frame1++; }//1공격대기
 
-        public void motionBack() { if (motion == 3 || frame1 >= frame3) { motion = 0; } }//원래대로 돌아옴
+        public void motionBack() { if (motion == 3 && frame1 >= frame3) { motion = 0; frame1 = 0; } }//원래대로 돌아옴
         /// </summary>
         public void testunit() {
             name = "test";
@@ -201,7 +205,7 @@ namespace _3kim_defense
             AI = 0;
             number = 9999;
             range = 10;
-            
+            motion = 0;
         }
     }
 
