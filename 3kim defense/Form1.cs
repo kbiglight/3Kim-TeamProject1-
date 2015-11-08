@@ -26,6 +26,7 @@ namespace _3kim_defense
         enemy[] Enemy = new enemy[100];//적 개수를 지정
         Tower T1=new Tower();
         Tower T2 = new Tower();
+        enemyAI AII = new enemyAI();
         int PlayerCount;//플레이어 개체의 개수를 지정
         int EnemyCount;//적 개체수를 지정
         int TargetA;//아군의 공격목표
@@ -114,6 +115,7 @@ namespace _3kim_defense
             }
             //여기는 프레임과 변수들을 표현해서 출력하는 장소입니다.
             int P;
+            int H;
             label2.Text = frame.ToString();
             label3.Text = PlayerCount.ToString();
             P = Player[0].XIN();
@@ -124,6 +126,20 @@ namespace _3kim_defense
             label10.Text = TargetA.ToString();
             P = T2.towethp();
             label12.Text = P.ToString();
+            P = Enemy[0].XIN();
+            label13.Text = P.ToString();
+            P = Enemy[0].motionReturn();
+            label14.Text = P.ToString();
+            label16.Text = TargetAX.ToString();
+            H = Enemy[0].motionReturn();
+            label18.Text = H.ToString();
+            H = Enemy[0].frameset();
+            label18.Text = H.ToString();
+            H = Player[0].hpReturn();
+            label19.Text = H.ToString();
+            H = Enemy[0].hpReturn();
+            label20.Text = H.ToString();
+
         }
 
         public void pictures(PictureBox K) { this.Controls.Add(K); }
@@ -146,16 +162,17 @@ namespace _3kim_defense
             TargetA = 0;
             TargetB = 0;
             startUp.Enabled = false;
+            PlayerCount = 0;
+            EnemyCount = 0;
         }
     
 
         private void gametimer_Tick(object sender, EventArgs e)//게임타이머가 하는일은 유닛의 이동 설정,공격 설정,데미지 판정 설정입니다.
         {//타겟은 시시때때로 변경되어야 합니다.
             Timer++;
-            TargetAX = 483;
+           
             TargetBX = 26;//B는 오른쪽에서 시작하기 때문
-            TargetA = 101;
-            TargetB = 101;
+            TargetB = 101;//목표를 초기화
             int Live = 0;//유닛의 생사 결정
 
             //여기는 아군측의 행동입니다.
@@ -168,7 +185,7 @@ namespace _3kim_defense
                     Player[i].motionBack();
                     int GL = Player[i].motionReturn();//유닛의 모션 변수를 불러올거임
 
-                    if (GL == 0) { Player[i].umove(); }//모션이 0일 경우에만 이동
+                    if (GL == 0) { Player[i].umove(TargetAX); }//모션이 0일 경우에만 이동
                     if (Player[i].XIN() > TargetBX) { TargetBX = Player[i].XIN(); TargetB = i; }//타겟의 X값이 가장 큰값을 찾는다.
                 }
             }//이동 페이즈
@@ -201,7 +218,7 @@ namespace _3kim_defense
                         }
                         else if(Enemy[TargetA].hpReturn()>0)
                         {
-                            Enemy[TargetA].attackcheck(PPOWER);//타겟이 아닐경우 적에게
+                            Enemy[TargetA].hitcheck(PPOWER);//타겟이 아닐경우 적에게
                         }                         
                         /*
                                                    여기는 가상의 적 클래스가 만들어졌다고 가정하고 씁니다.
@@ -214,17 +231,35 @@ namespace _3kim_defense
 
 
             //여기서부턴 적군측 움직임
+            //여기는 적의 AI를 감지합니다.
+
+
+
+
+
+            int GPP;
+            GPP=AII.AImovingTest(Timer);
+            if (GPP == 0) { } else if (GPP == 1) { Enemy[0].testunit_sumon1(); EnemyCount++; }
+
+
+
+
+
+            //
+            TargetAX = 483;
+            TargetA = 101;//목표 초기화
 
             for (int i = 0; i < EnemyCount; i++)
             {//유닛들 이동
                 Live = Enemy[i].livecheck();//live를 리턴
-                Enemy[i].motionBack();
+
                 if (Live == 1)//살아있을 때만 움직인다. for문마다 넣어줌
                 {
+                    Enemy[i].motionBack();
                     int GL = Enemy[i].motionReturn();//유닛의 모션 변수를 불러올거임
-
-                    if (GL == 0) { Enemy[i].umove(); }//모션이 0일 경우에만 이동
-                    if (Enemy[i].XIN() > TargetBX) { TargetBX = Enemy[i].XIN(); TargetB = i; }//타겟의 X값이 가장 큰값을 찾는다.
+                    
+                    if (GL == 0) { Enemy[i].umove(TargetBX); }//모션이 0일 경우에만 이동
+                    if (Enemy[i].XIN() < TargetAX) { TargetAX = Enemy[i].XIN(); TargetA = i; }//타겟의 X값이 가장 큰값을 찾는다.
                 }
             }//이동 페이즈
             for (int i = 0; i < EnemyCount; i++)//감지 후 모션변경 페이즈
@@ -232,7 +267,7 @@ namespace _3kim_defense
                 Live = Enemy[i].livecheck();//live를 리턴
                 if (Live == 1)
                 {
-                    Enemy[i].rangechecking(TargetA, TargetAX);
+                    Enemy[i].rangechecking(TargetB, TargetBX);
 
                     Enemy[i].framego();//프레임++
                     Enemy[i].motionChange();//모션이 1인데 프레임이 넘은 사람은 2로
@@ -249,13 +284,13 @@ namespace _3kim_defense
                         int PPOWER;//빠워 변수
                         Enemy[i].motionset(3);//모션을 3으로 변경,중복 공격 방지를 위함
                         PPOWER = Enemy[i].hited();//플레이어의 공격력을 리턴
-                        if (TargetAX == 101)
+                        if (TargetA == 101)
                         {
                             T1.towerdamage(PPOWER);//타겟이 이럴경우 타워에게
                         }
-                        else
+                        else if(Enemy[TargetA].hpReturn()>0)
                         {
-                            Player[TargetA].attackcheck(PPOWER);//타겟이 아닐경우 적에게
+                            Player[TargetA].hitcheck(PPOWER);//타겟이 아닐경우 적에게
                         }
                         /*
                         여기는 가상의아군 클래스가 만들어졌다고 가정하고 씁니다.

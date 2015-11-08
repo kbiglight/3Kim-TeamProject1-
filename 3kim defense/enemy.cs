@@ -57,6 +57,7 @@ namespace _3kim_defense
             frame1 = 0;
             frame2 = 0;
             frame3 = 0;
+            motion = 0;
 
         }
         public void sumon(string aname, int atype, int amaxhp, int amaxmp, int amp, int ax, int ay, int apow, int adef, int aspd, int aline, int aAI, int anumber, int arange, int width, int height, int aknockback, int aDknockback)
@@ -82,13 +83,13 @@ namespace _3kim_defense
             liven = 1;
 
         }
-        public void umove()
+        public void umove(int KNG)
         {
-            if (motion==0 && x > 30)
+            if (motion==0 && x > 30&&x>KNG)
             {
                 x = x - spd;//x좌표가 spd 수치만큼 변경
                 //enemy의 움직임은 -로갑니다.
-
+                if (frame1 > frame3) { frame1 = 0; }
 
             }
             //이동 모션으로 이미지 변경
@@ -114,12 +115,13 @@ namespace _3kim_defense
         {
             if (motion == 0)//이동 상황에만 체크한다.
             {
-                if (x > K && x - range <= K)//적의 인식범위는 아군의 인식범위와는 반대방향입니다.
+                if (x >= K && x - range <= K)//적의 인식범위는 아군의 인식범위와는 반대방향입니다.
                 {//만약 적 캐릭터의 X축이 아군 캐릭터의 범위 안에 들었을 경우
                     motion = 1;//공격 모션으로 전환
                     aim = NUMB;
 
                 }
+                else if (x < K) { x++; aim = 0; }
                 else { aim = 0; }
             }
         }
@@ -145,6 +147,8 @@ namespace _3kim_defense
             liven = 1;
             frame1 = 0;
             frame2 = 3;
+            
+            motion = 0;
         }
         public void testunit_sumon2()
         {
@@ -168,6 +172,8 @@ namespace _3kim_defense
             liven = 1;
             frame1 = 0;
             frame2 = 3;
+            frame3 = 100;
+            motion = 0;
         }
 
 
@@ -189,15 +195,18 @@ namespace _3kim_defense
 
         public void hitcheck(int K)//위에서 리턴받은 최종 데미지를 체크,동시에 사망판정
         {
-            hp = hp - K;//
-            if (hp <= 0) { live = 0; }//hp가 0이하이면 죽었다고 체크
+            int GGg = K-def;
+            if (GGg <= 0) { GGg = 1; }
+            hp = hp - GGg;//
+            if (hp <= 0) { live = 0; }
         }
         public void motionset(int K) { motion = K; }//모션을 밖에서 변경하는법
         public int motionReturn() { return motion; }
-        public void motionChange() { if (motion == 1 || frame1 >= frame2) { motion = 2; } }//모션변경
+        public int frameset() { return frame1; }
+        public void motionChange() { if (motion == 1 || frame1 >= frame2) { motion = 2; } else if (frame1 < frame2) { motion = 0; } }//모션변경
         public void framego() { frame1++; }//1공격대기
 
-        public void motionBack() { if (motion == 3 || frame1 >= frame3) { motion = 0; frame1 = 0; } }//원래대로 돌아옴
+        public void motionBack() { if (motion == 3 || frame1 > frame3) { motion = 0; frame1 = 0; } }//원래대로 돌아옴
         /// </summary>
         public void testunit()
         {

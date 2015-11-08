@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="enemy.cs" />
+    <Compile Include="enemyAI.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

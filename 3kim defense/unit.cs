@@ -80,14 +80,22 @@ namespace _3kim_defense
             liven = 1;
             
         }
-        public void umove() {
-            if (motion == 0&&x<480)
+
+
+
+
+        public void umove(int KNG) {//적측의 맨 앞 유닛의 X값
+            if (motion == 0&&x<480&&x<KNG)
             {
                 x = x + spd;//x좌표가 spd 수치만큼 변경
                 if (frame1 >= frame3) { frame1 = 0; }
             }
             //이동 모션으로 이미지 변경
         }//이동
+
+
+
+
         void rangecheck(int enemyx) {//적 유닛의 x좌표
             if (enemyx > x + range) {/*공격 이벤트
                 attack();//이동 모션에서 공격 모션으로 변경
@@ -106,12 +114,13 @@ namespace _3kim_defense
         {
             if (motion == 0)//이동 상황에만 체크한다.
             {
-                if (x < NUMB && x + range >= NUMB)
+                if (x <= NUMB && x + range >= NUMB)
                 {//만약 적 캐릭터의 X축이 아군 캐릭터의 범위 안에 들었을 경우
                     motion = 1;//공격 모션으로 전환
                     aim = K;
 
                 }
+                else if (x > K) { x--; aim = 0; }
                 else { aim = 0; }
             }
         }
@@ -123,7 +132,7 @@ namespace _3kim_defense
             maxmp = 20;
             x = 41;
             y = 129;//기지의 위치로 좌표 설정 예정
-            pow = 2;
+            pow = 4;
             def = 1;
             spd = 4;
             line = 0;
@@ -180,7 +189,9 @@ namespace _3kim_defense
 
         public void hitcheck(int K)//위에서 리턴받은 최종 데미지를 체크,동시에 사망판정
         {
-            hp = hp - K;//
+            int GGg = K-def;
+            if (GGg <= 0) { GGg = 1; }
+            hp = hp - GGg;//
             if (hp <= 0) { live = 0; }//hp가 0이하이면 죽었다고 체크
         }
         public void motionset(int K) { motion = K; }//모션을 밖에서 변경하는법
