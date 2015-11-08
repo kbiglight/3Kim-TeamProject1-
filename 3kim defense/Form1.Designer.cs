@@ -123,7 +123,7 @@
             // 
             this.button4.Location = new System.Drawing.Point(354, 287);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(37, 23);
+            this.button4.Size = new System.Drawing.Size(38, 23);
             this.button4.TabIndex = 7;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
@@ -338,12 +338,12 @@
             // 
             // GraphicTimer
             // 
-            this.GraphicTimer.Interval = 1000;
+            this.GraphicTimer.Interval = 200;
             this.GraphicTimer.Tick += new System.EventHandler(this.GraphicTimer_Tick);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(406, 287);
+            this.button5.Location = new System.Drawing.Point(398, 287);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(32, 23);
             this.button5.TabIndex = 30;
@@ -448,7 +448,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(524, 109);
+            this.label23.Location = new System.Drawing.Point(14, 13);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(44, 12);
             this.label23.TabIndex = 31;

@@ -81,8 +81,8 @@
     <None Include="Resources\기지.bmp" />
     <None Include="Resources\적기지.bmp" />
     <None Include="Resources\임시유닛.bmp" />
-    <None Include="Resources\lose.bmp" />
-    <None Include="Resources\win.bmp" />
+    <None Include="Resources\lose1.bmp" />
+    <None Include="Resources\win1.bmp" />
     <Content Include="Resources\커서.bmp" />
     <None Include="Resources\커서2.bmp" />
     <None Include="Resources\클리어.bmp" />

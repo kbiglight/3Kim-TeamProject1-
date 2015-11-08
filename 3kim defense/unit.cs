@@ -155,8 +155,8 @@ namespace _3kim_defense
             maxmp = 20;
             x = 41;
             y = 129;//기지의 위치로 좌표 설정 예정
-            pow = 112;
-            def = 2;
+            pow = 12;
+            def = 1;
             spd = 2;
             line = 0;
             AI = 0;
@@ -168,6 +168,7 @@ namespace _3kim_defense
             liven = 1;
             frame1 = 0;
             frame2 = 3;
+            motion = 0;
         }
 
 

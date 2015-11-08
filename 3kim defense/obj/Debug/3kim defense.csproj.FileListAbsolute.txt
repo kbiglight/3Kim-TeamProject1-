@@ -20,3 +20,4 @@ C:\Users\doog0_000\Documents\3Kim-TeamProject1-\3kim defense\obj\Debug\3kim defe
 C:\Users\doog0_000\Documents\3Kim-TeamProject1-\3kim defense\obj\Debug\_3kim_defense.Form1.resources
 C:\Users\doog0_000\Documents\3Kim-TeamProject1-\3kim defense\obj\Debug\_3kim_defense.Properties.Resources.resources
 C:\Users\doog0_000\Documents\3Kim-TeamProject1-\3kim defense\obj\Debug\3kim defense.csproj.GenerateResource.Cache
+C:\Users\doog0_000\Documents\3kim\3kim defense\bin\Debug\3kim defense.exe.config
