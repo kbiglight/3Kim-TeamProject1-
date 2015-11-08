@@ -68,6 +68,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.GraphicTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.cirsur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -129,7 +130,7 @@
             // cirsur
             // 
             this.cirsur.Image = global::_3kim_defense.Properties.Resources.커서2;
-            this.cirsur.Location = new System.Drawing.Point(41, 219);
+            this.cirsur.Location = new System.Drawing.Point(472, 227);
             this.cirsur.Name = "cirsur";
             this.cirsur.Size = new System.Drawing.Size(12, 12);
             this.cirsur.TabIndex = 6;
@@ -215,6 +216,7 @@
             this.pictureBox9.Location = new System.Drawing.Point(12, 12);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(510, 254);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox9.TabIndex = 0;
             this.pictureBox9.TabStop = false;
             this.pictureBox9.Click += new System.EventHandler(this.pictureBox9_Click);
@@ -426,6 +428,11 @@
             this.label22.TabIndex = 29;
             this.label22.Text = "label22";
             // 
+            // GraphicTimer
+            // 
+            this.GraphicTimer.Interval = 1;
+            this.GraphicTimer.Tick += new System.EventHandler(this.GraphicTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -526,5 +533,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Timer GraphicTimer;
     }
 }

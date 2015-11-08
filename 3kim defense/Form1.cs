@@ -14,10 +14,12 @@ namespace _3kim_defense
     {
         public Form1()
         {
+            
             InitializeComponent();
 
         }
-        
+        Image dblbuff; // 이미지를 그릴 백버퍼
+        Graphics g; //
         int frame;//화면을 제어하는 변수입니다. 0=타이틀,1=설정 등 frame에 따라 장면이 나누어지게 할 예정입니다.
         //이곳에 frame을 추가할 때마다 frame의 역할을 적습니다.
         //0,1=타이틀, 2=로딩 3=월드맵 
@@ -41,6 +43,9 @@ namespace _3kim_defense
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            dblbuff = new Bitmap(pictureBox9.Width, pictureBox9.Height);
+            g = Graphics.FromImage(dblbuff);
+            g = pictureBox9.CreateGraphics();
             pictureBox9.Image = _3kim_defense.Properties.Resources.화면;
             frame = 0;
             PlayerCount = 0;
@@ -111,6 +116,7 @@ namespace _3kim_defense
             }//커서를 1스테이지에 세트
             if (frame == 4) { pictureBox9.Image = _3kim_defense.Properties.Resources.게임화면;
                 gametimer.Enabled = true;//게임타이머를 돌린다.
+                GraphicTimer.Enabled = true;
                 if (Timer <=2) { startUp.Enabled = true; }
             }
             //여기는 프레임과 변수들을 표현해서 출력하는 장소입니다.
@@ -169,17 +175,16 @@ namespace _3kim_defense
             EnemyCount = 0;
         }
     
-
+        
         private void gametimer_Tick(object sender, EventArgs e)//게임타이머가 하는일은 유닛의 이동 설정,공격 설정,데미지 판정 설정입니다.
         {//타겟은 시시때때로 변경되어야 합니다.
             Timer++;
            
-            
             int Live = 0;//유닛의 생사 결정
+            
+                    //여기는 아군측의 행동입니다.
 
-            //여기는 아군측의 행동입니다.
-
-            for (int i = 0; i < PlayerCount; i++)
+                    for (int i = 0; i < PlayerCount; i++)
             {//유닛들 이동
                 Live = Player[i].livecheck();//live를 리턴
                 if (Live == 1)//살아있을 때만 움직인다. for문마다 넣어줌
@@ -305,7 +310,9 @@ namespace _3kim_defense
             }
             TargetBX = 26;//B는 오른쪽에서 시작하기 때문
             TargetB = 101;//목표를 초기화
+    
 
+           
 
 
 
@@ -363,6 +370,33 @@ namespace _3kim_defense
 
         private void label3_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void GraphicTimer_Tick(object sender, EventArgs e)
+        {
+            int Live = 0;
+            
+            
+            g.DrawImage(_3kim_defense.Properties.Resources.게임화면, 0,0, pictureBox9.Width, pictureBox9.Height);
+            for (int i = 0; i < PlayerCount; i++)
+            {//유닛을 그림
+                Live = Player[i].livecheck();//live를 리턴
+                int GKL = Player[i].XIN();
+                if (Live == 1)//살아있을 때만 움직인다. for문마다 넣어줌
+                {
+                    g.DrawImage(_3kim_defense.Properties.Resources.아직안_클리어,GKL,219);
+                }
+            }
+            for (int i = 0; i < EnemyCount; i++)
+            {//유닛을 그림
+                Live = Enemy[i].livecheck();//live를 리턴
+                int GKL = Enemy[i].XIN();
+                if (Live == 1)//살아있을 때만 움직인다. for문마다 넣어줌
+                {
+                    g.DrawImage(_3kim_defense.Properties.Resources.클리어, GKL, 219);
+                }
+            }
 
         }
     }
