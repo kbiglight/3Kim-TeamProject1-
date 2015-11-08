@@ -37,6 +37,7 @@ namespace _3kim_defense
         int TargetBX;
         int Timer;//시간 안내
         int GT;//그래픽 타이머
+        int Mana;//쿨타임대신에 넣어봄
         private void background_Click(object sender, EventArgs e)
         {
 
@@ -44,8 +45,8 @@ namespace _3kim_defense
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dblbuff = new Bitmap(pictureBox9.Width, pictureBox9.Height);
-            g = Graphics.FromImage(dblbuff);
+           // dblbuff = new Bitmap(pictureBox9.Width, pictureBox9.Height);
+           // g = Graphics.FromImage(dblbuff);
             g = pictureBox9.CreateGraphics();
             pictureBox9.Image = _3kim_defense.Properties.Resources.화면;
             frame = 0;
@@ -59,7 +60,7 @@ namespace _3kim_defense
             }//적들을 다 지정
             Timer = 0;
             GT = 0;
-            
+            Mana = 0;
         }
 
         private void pictureBox9_Click(object sender, EventArgs e)
@@ -115,11 +116,20 @@ namespace _3kim_defense
             if (frame == 3) { cirsur.Top = 148; cirsur.Left = 215;
                 gametimer.Enabled = false;//게임타이머를 멈춘다.
             }//커서를 1스테이지에 세트
-            if (frame == 4) { //pictureBox9.Image = _3kim_defense.Properties.Resources.게임화면;
+            if (frame == 4) {
                 gametimer.Enabled = true;//게임타이머를 돌린다.
                 GraphicTimer.Enabled = true;
-                if (Timer <=2) { startUp.Enabled = true; }
+                if (Timer <=1) { startUp.Enabled = true; }
             }
+            if (frame == 5)//승패구간
+            { gametimer.Enabled = false; GraphicTimer.Enabled = false;
+                pictureBox9.Image = _3kim_defense.Properties.Resources.lose;
+            }
+            if (frame == 6)
+            { gametimer.Enabled = false; GraphicTimer.Enabled = false;
+                pictureBox9.Image = _3kim_defense.Properties.Resources.win;
+            }
+
             //여기는 프레임과 변수들을 표현해서 출력하는 장소입니다.
             int P;
             int H;
@@ -149,6 +159,7 @@ namespace _3kim_defense
             P = T1.towethp();
             label21.Text = P.ToString();
             label22.Text = TargetB.ToString();
+            label23.Text = Mana.ToString();
 
         }
 
@@ -156,12 +167,25 @@ namespace _3kim_defense
         PictureBox Kk = new PictureBox();
         private void button4_Click(object sender, EventArgs e)
         {
-
-            Player[PlayerCount].testunit_sumon1();
-            PlayerCount++;
+            if (Mana > 10)
+            {
+                Player[PlayerCount].testunit_sumon1();
+                PlayerCount++;
+                Mana = Mana - 10;
+            }
 
         }
-         private void startUp_Tick(object sender, EventArgs e)//게임시작전에 해야할일
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (Mana > 50)
+            {
+                Player[PlayerCount].testunit_sumon2();
+                PlayerCount++;
+                Mana = Mana - 50;
+            }
+        }
+
+        private void startUp_Tick(object sender, EventArgs e)//게임시작전에 해야할일
         {
             for (int GGG=0; GGG < 100; GGG++) { Player[GGG].uninit(); }
             for (int GGG = 0; GGG < 100; GGG++) { Enemy[GGG].uninit(); }//유닛과 적 초기화
@@ -171,16 +195,24 @@ namespace _3kim_defense
             TargetBX = 26;//B는 오른쪽에서 시작하기 때문
             TargetA = 0;
             TargetB = 0;
-            startUp.Enabled = false;
+            
             PlayerCount = 0;
             EnemyCount = 0;
+            Mana = 0;
+            Timer = 0;
+            startUp.Enabled = false;
         }
     
         
         private void gametimer_Tick(object sender, EventArgs e)//게임타이머가 하는일은 유닛의 이동 설정,공격 설정,데미지 판정 설정입니다.
         {//타겟은 시시때때로 변경되어야 합니다.
             Timer++;
-           
+            if (Mana < 100) { Mana++; }
+            int Setting;//타워 hp관리
+            Setting = T1.towethp();
+            if (Timer > 4&& Setting <= 0) { frame = 5; }
+            Setting = T2.towethp();
+            if (Timer > 4&&Setting <= 0) { frame = 6; }
             int Live = 0;//유닛의 생사 결정
             
                     //여기는 아군측의 행동입니다.
@@ -400,6 +432,8 @@ namespace _3kim_defense
             }
 
         }
+
+        
     }
 
 

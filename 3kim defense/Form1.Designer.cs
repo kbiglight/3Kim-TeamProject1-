@@ -34,16 +34,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button4 = new System.Windows.Forms.Button();
-            this.cirsur = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.gametimer = new System.Windows.Forms.Timer(this.components);
             this.startUp = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
@@ -69,6 +59,18 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.GraphicTimer = new System.Windows.Forms.Timer(this.components);
+            this.button5 = new System.Windows.Forms.Button();
+            this.cirsur = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cirsur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -121,105 +123,11 @@
             // 
             this.button4.Location = new System.Drawing.Point(354, 287);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(37, 23);
             this.button4.TabIndex = 7;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // cirsur
-            // 
-            this.cirsur.Image = global::_3kim_defense.Properties.Resources.커서2;
-            this.cirsur.Location = new System.Drawing.Point(472, 227);
-            this.cirsur.Name = "cirsur";
-            this.cirsur.Size = new System.Drawing.Size(12, 12);
-            this.cirsur.TabIndex = 6;
-            this.cirsur.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::_3kim_defense.Properties.Resources.활성화_안됨;
-            this.pictureBox2.Location = new System.Drawing.Point(54, 272);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(38, 38);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Location = new System.Drawing.Point(293, 272);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(39, 38);
-            this.pictureBox8.TabIndex = 0;
-            this.pictureBox8.TabStop = false;
-            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Location = new System.Drawing.Point(253, 272);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(39, 38);
-            this.pictureBox7.TabIndex = 0;
-            this.pictureBox7.TabStop = false;
-            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Location = new System.Drawing.Point(213, 272);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(39, 38);
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Location = new System.Drawing.Point(173, 272);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(39, 38);
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Location = new System.Drawing.Point(133, 272);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(39, 38);
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(93, 272);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(39, 38);
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::_3kim_defense.Properties.Resources.임시유닛;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 272);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 38);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = global::_3kim_defense.Properties.Resources.게임화면;
-            this.pictureBox9.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(510, 254);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 0;
-            this.pictureBox9.TabStop = false;
-            this.pictureBox9.Click += new System.EventHandler(this.pictureBox9_Click);
             // 
             // gametimer
             // 
@@ -430,14 +338,129 @@
             // 
             // GraphicTimer
             // 
-            this.GraphicTimer.Interval = 200;
+            this.GraphicTimer.Interval = 1000;
             this.GraphicTimer.Tick += new System.EventHandler(this.GraphicTimer_Tick);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(406, 287);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(32, 23);
+            this.button5.TabIndex = 30;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // cirsur
+            // 
+            this.cirsur.Image = global::_3kim_defense.Properties.Resources.커서2;
+            this.cirsur.Location = new System.Drawing.Point(472, 227);
+            this.cirsur.Name = "cirsur";
+            this.cirsur.Size = new System.Drawing.Size(12, 12);
+            this.cirsur.TabIndex = 6;
+            this.cirsur.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::_3kim_defense.Properties.Resources.활성화_안됨;
+            this.pictureBox2.Location = new System.Drawing.Point(54, 272);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(38, 38);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Location = new System.Drawing.Point(293, 272);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox8.TabIndex = 0;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Location = new System.Drawing.Point(253, 272);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox7.TabIndex = 0;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Location = new System.Drawing.Point(213, 272);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Location = new System.Drawing.Point(173, 272);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox5.TabIndex = 0;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Location = new System.Drawing.Point(133, 272);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(93, 272);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::_3kim_defense.Properties.Resources.임시유닛;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 272);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::_3kim_defense.Properties.Resources.로딩;
+            this.pictureBox9.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(510, 254);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 0;
+            this.pictureBox9.TabStop = false;
+            this.pictureBox9.Click += new System.EventHandler(this.pictureBox9_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(524, 109);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(44, 12);
+            this.label23.TabIndex = 31;
+            this.label23.Text = "label23";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(545, 349);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label20);
@@ -534,5 +557,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Timer GraphicTimer;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label23;
     }
 }
