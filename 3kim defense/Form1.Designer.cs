@@ -430,7 +430,7 @@
             // 
             // GraphicTimer
             // 
-            this.GraphicTimer.Interval = 1;
+            this.GraphicTimer.Interval = 200;
             this.GraphicTimer.Tick += new System.EventHandler(this.GraphicTimer_Tick);
             // 
             // Form1

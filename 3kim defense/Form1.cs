@@ -36,6 +36,7 @@ namespace _3kim_defense
         int TargetAX;//아군 목표의 x값
         int TargetBX;
         int Timer;//시간 안내
+        int GT;//그래픽 타이머
         private void background_Click(object sender, EventArgs e)
         {
 
@@ -57,7 +58,7 @@ namespace _3kim_defense
                 Enemy[G] = new enemy();
             }//적들을 다 지정
             Timer = 0;
-
+            GT = 0;
             
         }
 
@@ -114,7 +115,7 @@ namespace _3kim_defense
             if (frame == 3) { cirsur.Top = 148; cirsur.Left = 215;
                 gametimer.Enabled = false;//게임타이머를 멈춘다.
             }//커서를 1스테이지에 세트
-            if (frame == 4) { pictureBox9.Image = _3kim_defense.Properties.Resources.게임화면;
+            if (frame == 4) { //pictureBox9.Image = _3kim_defense.Properties.Resources.게임화면;
                 gametimer.Enabled = true;//게임타이머를 돌린다.
                 GraphicTimer.Enabled = true;
                 if (Timer <=2) { startUp.Enabled = true; }
@@ -372,13 +373,13 @@ namespace _3kim_defense
         {
 
         }
-
+        //그림을 그립시다!
         private void GraphicTimer_Tick(object sender, EventArgs e)
         {
             int Live = 0;
-            
-            
-            g.DrawImage(_3kim_defense.Properties.Resources.게임화면, 0,0, pictureBox9.Width, pictureBox9.Height);
+
+
+            g.DrawImage(_3kim_defense.Properties.Resources.게임화면, 0, 0, pictureBox9.Width, pictureBox9.Height); 
             for (int i = 0; i < PlayerCount; i++)
             {//유닛을 그림
                 Live = Player[i].livecheck();//live를 리턴
