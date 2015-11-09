@@ -228,5 +228,6 @@ namespace _3kim_defense
             number = 9999;
             range = 10;
         }
+        public int typing() { return type; }
     }
 }

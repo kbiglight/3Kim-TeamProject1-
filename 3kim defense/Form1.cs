@@ -49,7 +49,7 @@ namespace _3kim_defense
         private void Form1_Load(object sender, EventArgs e)
         {
             pictureBox9.CreateGraphics();
-            pictureBox9.Image = _3kim_defense.Properties.Resources.화면;
+            pictureBox9.Image = _3kim_defense.Properties.Resources.시작1;
             g = pictureBox9.CreateGraphics();
             frame = 0;
             PlayerCount = 0;
@@ -74,7 +74,7 @@ namespace _3kim_defense
         {
             if (frame == 0)
             {
-                pictureBox9.Image = _3kim_defense.Properties.Resources.화면2;
+                pictureBox9.Image = _3kim_defense.Properties.Resources.시작1;
                 frame = 1;
             }
         }
@@ -83,7 +83,6 @@ namespace _3kim_defense
         {
             if (frame == 1)
             {
-                pictureBox9.Image = _3kim_defense.Properties.Resources.화면;
                 frame = 0;
             }
         }
@@ -109,25 +108,29 @@ namespace _3kim_defense
 
             if (frame == 0)
             {
-                cirsur.Top = 203;
-                cirsur.Left = 337;
+                pictureBox9.Image = _3kim_defense.Properties.Resources.시작1;
+                cirsur.Top = 156;
+                cirsur.Left = 370;
             }
 
             if (frame == 1)
             {
-                cirsur.Top = 239;
-                cirsur.Left = 338;
+                pictureBox9.Image = _3kim_defense.Properties.Resources.시작1;
+                cirsur.Top = 190;
+                cirsur.Left = 370;
             }
 
             if (frame == 3) // 커서를 스테이지 1에 세트
             {
-                cirsur.Top = 148;
-                cirsur.Left = 215;
+                cirsur.Top = 999;
+                cirsur.Left = 999;
                 gametimer.Enabled = false; // 게임타이머를 멈춘다.
             }
 
             if (frame == 4)  // pictureBox9.Image = _3kim_defense.Properties.Resources.게임화면
             {
+                cirsur.Top = 999;
+                cirsur.Left = 999;
                 gametimer.Enabled = true; // 게임타이머를 돌린다.
                 GraphicTimer.Enabled = true;
                 if (Timer <=2) { startUp.Enabled = true; }
@@ -135,14 +138,14 @@ namespace _3kim_defense
 
             if (frame == 5)
             {
-                pictureBox9.Image = _3kim_defense.Properties.Resources.lose;
+                pictureBox9.Image = _3kim_defense.Properties.Resources.졌을때;
                 gametimer.Enabled = false;
                 GraphicTimer.Enabled = false;
             }
 
             if (frame == 6)
             {
-                pictureBox9.Image = _3kim_defense.Properties.Resources.win;
+                pictureBox9.Image = _3kim_defense.Properties.Resources.축하합니다;
                 gametimer.Enabled = false;
                 GraphicTimer.Enabled = false;
             }
@@ -423,7 +426,7 @@ namespace _3kim_defense
         // 그림을 그립시다!
         private void GraphicTimer_Tick(object sender, EventArgs e)
         {
-            g.DrawImage(_3kim_defense.Properties.Resources.게임화면, 0, 0, pictureBox9.Width, pictureBox9.Height); 
+            g.DrawImage(_3kim_defense.Properties.Resources.country, 0, 0, pictureBox9.Width, pictureBox9.Height); 
             for (int i = 0; i < PlayerCount; i++) // 유닛을 그림
             {
                 if (Player[i].livecheck() == 1) // 살아있을 때만 움직인다. for문마다 넣어줌
@@ -431,20 +434,28 @@ namespace _3kim_defense
                     int SSSSS = Player[i].typing();
                     if (SSSSS == 0)
                     {
-                        g.DrawImage(_3kim_defense.Properties.Resources.아직안_클리어, Player[i].XIN(), 219);
+                        g.DrawImage(_3kim_defense.Properties.Resources.saxon_swordsman, Player[i].XIN()-20, 190);
                     }
                     else if(SSSSS == 1)
                     {
-                        g.DrawImage(_3kim_defense.Properties.Resources.앨리트, Player[i].XIN()-30, 150);
+                        g.DrawImage(_3kim_defense.Properties.Resources.Fumiko_mockup_wings, Player[i].XIN()-100, 150,120,90);
                     }
                     
                 }
             }
             for (int i = 0; i < EnemyCount; i++) // 유닛을 그림
             {
+                int XXXXX = Enemy[i].typing();
                 if (Enemy[i].livecheck() == 1) // 살아있을 때만 움직인다. for문마다 넣어줌
                 {
-                    g.DrawImage(_3kim_defense.Properties.Resources.클리어, Enemy[i].XIN(), 219);
+                    if (XXXXX == 0)
+                    {
+                        g.DrawImage(_3kim_defense.Properties.Resources.howl2, Enemy[i].XIN(), 180);
+                    }
+                    else if(XXXXX==1)
+                    {
+                        g.DrawImage(_3kim_defense.Properties.Resources.howl2_2, Enemy[i].XIN(), 180);
+                    }
                 }
             }
         }

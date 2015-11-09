@@ -244,11 +244,11 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(273, 359);
+            this.label12.Location = new System.Drawing.Point(273, 383);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(50, 12);
             this.label12.TabIndex = 19;
-            this.label12.Text = "UT\'s hp";
+            this.label12.Text = "ET\'s hp";
             // 
             // label13
             // 
@@ -325,11 +325,11 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(273, 383);
+            this.label21.Location = new System.Drawing.Point(273, 359);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(50, 12);
             this.label21.TabIndex = 28;
-            this.label21.Text = "ET\'s hp";
+            this.label21.Text = "UT\'s hp";
             // 
             // label22
             // 
@@ -394,7 +394,7 @@
             // cirsur
             // 
             this.cirsur.Image = global::_3kim_defense.Properties.Resources.커서2;
-            this.cirsur.Location = new System.Drawing.Point(434, 206);
+            this.cirsur.Location = new System.Drawing.Point(370, 156);
             this.cirsur.Name = "cirsur";
             this.cirsur.Size = new System.Drawing.Size(12, 12);
             this.cirsur.TabIndex = 6;
@@ -478,7 +478,7 @@
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = global::_3kim_defense.Properties.Resources.로딩중__;
+            this.pictureBox9.Image = global::_3kim_defense.Properties.Resources.시작1;
             this.pictureBox9.Location = new System.Drawing.Point(12, 12);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(510, 254);

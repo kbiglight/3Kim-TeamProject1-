@@ -3,12 +3,15 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{92560243-C7F0-4B47-B5F6-C5E0808D9C29}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>_3kim_defense</RootNamespace>
     <AssemblyName>3kim defense</AssemblyName>
@@ -84,6 +87,15 @@
     <None Include="Resources\win1.bmp" />
     <None Include="Resources\로딩중...bmp" />
     <None Include="Resources\앨리트.bmp" />
+    <None Include="Resources\졌을때.bmp" />
+    <None Include="Resources\축하합니다.bmp" />
+    <None Include="Resources\Fumiko mockup wings.png" />
+    <None Include="Resources\howl.png" />
+    <None Include="Resources\saxon_swordsman.png" />
+    <None Include="Resources\howl2_2.png" />
+    <None Include="Resources\holtronome.gif" />
+    <None Include="Resources\country.png" />
+    <None Include="Resources\시작1.bmp" />
     <Content Include="Resources\커서.bmp" />
     <None Include="Resources\커서2.bmp" />
     <None Include="Resources\클리어.bmp" />
@@ -96,8 +108,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
