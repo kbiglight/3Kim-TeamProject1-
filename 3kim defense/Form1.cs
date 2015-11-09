@@ -299,7 +299,7 @@ namespace _3kim_defense
             
             if (Timer % 18 == 1) { AAA = AIQUEUE.Dequeue();}
             if (AAA == 1) { Enemy[EnemyCount].testunit_sumon1();EnemyCount++; }
-            if ( AAA==2 ) { Enemy[EnemyCount].testunit_sumon2(); EnemyCount++; }
+            else if ( AAA==2 ) { Enemy[EnemyCount].testunit_sumon2(); EnemyCount++; }
             
 
             TargetAX = 483;
@@ -428,7 +428,16 @@ namespace _3kim_defense
             {
                 if (Player[i].livecheck() == 1) // 살아있을 때만 움직인다. for문마다 넣어줌
                 {
-                    g.DrawImage(_3kim_defense.Properties.Resources.아직안_클리어, Player[i].XIN(), 219);
+                    int SSSSS = Player[i].typing();
+                    if (SSSSS == 0)
+                    {
+                        g.DrawImage(_3kim_defense.Properties.Resources.아직안_클리어, Player[i].XIN(), 219);
+                    }
+                    else if(SSSSS == 1)
+                    {
+                        g.DrawImage(_3kim_defense.Properties.Resources.앨리트, Player[i].XIN()-30, 150);
+                    }
+                    
                 }
             }
             for (int i = 0; i < EnemyCount; i++) // 유닛을 그림

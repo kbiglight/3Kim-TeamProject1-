@@ -83,6 +83,7 @@
     <None Include="Resources\lose1.bmp" />
     <None Include="Resources\win1.bmp" />
     <None Include="Resources\로딩중...bmp" />
+    <None Include="Resources\앨리트.bmp" />
     <Content Include="Resources\커서.bmp" />
     <None Include="Resources\커서2.bmp" />
     <None Include="Resources\클리어.bmp" />

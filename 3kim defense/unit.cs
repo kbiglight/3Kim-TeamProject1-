@@ -219,6 +219,7 @@ namespace _3kim_defense
             range = 10;
             motion = 0;
         }
+        public int typing() { return type; }
     }
 
 }
