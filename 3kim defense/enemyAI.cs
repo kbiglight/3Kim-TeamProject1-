@@ -8,6 +8,17 @@ namespace _3kim_defense
 {
     public class enemyAI//적의 AI입니다.
     {
+        Queue<int> testqueue = new Queue<int>();
+        public Queue<int> stage1() {
+            testqueue.Enqueue(1);
+            testqueue.Enqueue(1);
+            testqueue.Enqueue(1);
+            testqueue.Enqueue(1);
+            testqueue.Enqueue(1);
+            testqueue.Enqueue(1);
+            testqueue.Enqueue(2);
+            return testqueue;
+        }
         public int AImovingTest(int G)
         {
             int k=0;

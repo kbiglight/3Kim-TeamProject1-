@@ -72,7 +72,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\로딩.bmp" />
     <None Include="Resources\화면.bmp" />
     <None Include="Resources\화면2.bmp" />
     <None Include="Resources\게임화면.bmp" />
@@ -83,6 +82,7 @@
     <None Include="Resources\임시유닛.bmp" />
     <None Include="Resources\lose1.bmp" />
     <None Include="Resources\win1.bmp" />
+    <None Include="Resources\로딩중...bmp" />
     <Content Include="Resources\커서.bmp" />
     <None Include="Resources\커서2.bmp" />
     <None Include="Resources\클리어.bmp" />
@@ -96,6 +96,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
