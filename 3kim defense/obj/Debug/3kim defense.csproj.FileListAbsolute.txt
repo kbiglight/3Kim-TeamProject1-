@@ -32,3 +32,14 @@ C:\Users\TaeHun\Desktop\3Kim-TeamProject1--KimDongHuy\3kim defense\obj\Debug\_3k
 C:\Users\TaeHun\Desktop\3Kim-TeamProject1--KimDongHuy\3kim defense\obj\Debug\3kim defense.csproj.GenerateResource.Cache
 C:\Users\TaeHun\Desktop\3Kim-TeamProject1--KimDongHuy\3kim defense\obj\Debug\3kim defense.exe
 C:\Users\TaeHun\Desktop\3Kim-TeamProject1--KimDongHuy\3kim defense\obj\Debug\3kim defense.pdb
+C:\Users\TaeHun\Desktop\Git(SourceTree)\Team Project\3Kim-TeamProject1-\3kim defense\bin\Debug\3kim defense.exe.config
+C:\Users\TaeHun\Desktop\Git(SourceTree)\Team Project\3Kim-TeamProject1-\3kim defense\obj\Debug\3kim defense.exe
+C:\Users\TaeHun\Desktop\Git(SourceTree)\Team Project\3Kim-TeamProject1-\3kim defense\obj\Debug\3kim defense.pdb
+C:\Users\TaeHun\Desktop\Git(SourceTree)\Team Project\3Kim-TeamProject1-\3kim defense\bin\Debug\3kim defense.exe
+C:\Users\TaeHun\Desktop\Git(SourceTree)\Team Project\3Kim-TeamProject1-\3kim defense\bin\Debug\3kim defense.pdb
+C:\Users\TaeHun\Desktop\Git(SourceTree)\Team Project\3Kim-TeamProject1-\3kim defense\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\TaeHun\Desktop\Git(SourceTree)\Team Project\3Kim-TeamProject1-\3kim defense\bin\Debug\ko\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\TaeHun\Desktop\Git(SourceTree)\Team Project\3Kim-TeamProject1-\3kim defense\obj\Debug\3kim defense.csprojResolveAssemblyReference.cache
+C:\Users\TaeHun\Desktop\Git(SourceTree)\Team Project\3Kim-TeamProject1-\3kim defense\obj\Debug\_3kim_defense.Form1.resources
+C:\Users\TaeHun\Desktop\Git(SourceTree)\Team Project\3Kim-TeamProject1-\3kim defense\obj\Debug\_3kim_defense.Properties.Resources.resources
+C:\Users\TaeHun\Desktop\Git(SourceTree)\Team Project\3Kim-TeamProject1-\3kim defense\obj\Debug\3kim defense.csproj.GenerateResource.Cache
