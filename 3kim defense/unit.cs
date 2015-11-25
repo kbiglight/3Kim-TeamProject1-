@@ -172,6 +172,71 @@ namespace _3kim_defense
         }
 
 
+		/*
+		public void testunit_sumon3() {
+            name = "spear";		//창병
+            type = 0;
+            maxhp = 11;
+            hp = maxhp;
+            maxmp = 20;
+            x = 41;
+            y = 129;
+            pow = 10;
+            def = 0;			//-1
+            spd = 10;  
+            range = 30;			//+10
+            live = 1;
+        }
+
+		public void testunit_sumon4() {
+            name = "archer";	//궁병
+            type = 0;
+            maxhp = 8;			//-3
+            hp = maxhp;
+            maxmp = 20;
+            x = 41;
+            y = 129;
+            pow = 8;			//-2
+            def = 0;			//-1
+            spd = 10;  
+            range = 50;			//+30
+            live = 1;
+        }
+
+		public void testunit_sumon5() {
+            name = "knight";	//기사
+            type = 0;
+            maxhp = 16;			//+5			
+            hp = maxhp;
+            maxmp = 20;
+            x = 41;
+            y = 129;
+            pow = 11;			//+1
+            def = 1;			
+            spd = 20;			//+10  
+            range = 20;			
+            live = 1;
+        }
+
+		public void testunit_sumon6() {
+            name = "shield";	//방패병
+            type = 0;
+            maxhp = 16;			//+5
+            hp = maxhp;
+            maxmp = 20;
+            x = 41;
+            y = 129;
+            pow = 2;			//-8
+            def = 5;			//+4
+            spd = 7;			//-3  
+            range = 20;			
+            live = 1;
+        }
+
+		*/
+
+
+
         /// //데미지 판정
         /// 
         /////
@@ -223,4 +288,5 @@ namespace _3kim_defense
     }
 
 }
+
 
